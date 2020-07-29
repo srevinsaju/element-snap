@@ -39,7 +39,7 @@ parts:
     - libappindicator3-1
     - locales-all
 
-  musicblocks:
+  element-desktop:
     plugin: dump
     source: https://github.com/srevinsaju/element-deb/releases/download/continuous/element-desktop_1.7.2_amd64.deb 
     source-type: deb
@@ -61,6 +61,8 @@ parts:
       - libx11-xcb1
       - libxcb-dri3-0
       - libgtk2.0-0
+      - libsqlcipher
+      - libsecret-1
 
 apps:
   element-desktop:
