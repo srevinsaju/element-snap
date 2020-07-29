@@ -14,6 +14,16 @@ architectures:
 - build-on: amd64
 
 parts:
+  debian-multiarch-triplet-provider-launch:
+    plugin: nil
+    stage-snaps:
+    - debian-multiarch-triplet-provider-launch
+
+  classic-launch:
+    plugin: nil
+    stage-snaps:
+    - classic-launch
+
   desktop-gtk3:
     build-packages:
     - build-essential
@@ -66,10 +76,14 @@ parts:
 
 apps:
   element-desktop:
-    command: env TMPDIR=$XDG_RUNTIME_DIR PATH=/usr/local/bin:${PATH} ${SNAP}/bin/desktop-launch $SNAP/opt/Element/element-desktop --no-sandbox
+    command: opt/Element/element-desktop --no-sandbox
     environment: 
-      LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/dri:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/mesa:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/mesa-gl:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/xorg:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio/
-      LIBGL_DRIVERS_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/dri
+      PATH: $SNAP/lib:$SNAP/usr/lib:$SNAP/bin:$SNAP/usr/bin:$SNAP/usr/local/bin:$PATH
+    command-chain: &command-chain-common
+      - bin/debian-multiarch-triplet-provider-launch
+      - bin/classic-launch
+      - bin/desktop-launch
+      - opt/Element/element-desktop --no-sandbox
 
 plugs:
   desktop:
