@@ -1,4 +1,4 @@
-name: element
+name: element-desktop
 version: '1.7.2'
 summary: Glossy Matrix collaboration client
 description: |
@@ -62,10 +62,11 @@ parts:
       - libxcb-dri3-0
       - libgtk2.0-0
       - libsqlcipher-dev
+      - libsecret-1-dev
 
 apps:
   element-desktop:
-    command: env TMPDIR=$XDG_RUNTIME_DIR PATH=/usr/local/bin:${PATH} ${SNAP}/bin/desktop-launch $SNAP/opt/element-desktop/element-desktop --no-sandbox
+    command: env TMPDIR=$XDG_RUNTIME_DIR PATH=/usr/local/bin:${PATH} ${SNAP}/bin/desktop-launch $SNAP/opt/Element/element-desktop --no-sandbox
 
 plugs:
   desktop:
