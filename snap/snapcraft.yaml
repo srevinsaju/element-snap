@@ -79,6 +79,8 @@ apps:
     command: opt/Element/element-desktop --no-sandbox
     environment: 
       PATH: $SNAP/lib:$SNAP/usr/lib:$SNAP/bin:$SNAP/usr/bin:$SNAP/usr/local/bin:$PATH
+      TMPDIR: $XDG_RUNTIME_DIR
+      DISABLE_WAYLAND: 1
     command-chain: &command-chain-common
       - bin/debian-multiarch-triplet-provider-launch
       - bin/classic-launch
