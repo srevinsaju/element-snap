@@ -21,5 +21,5 @@ jobs:
           sudo snap install snapcraft --classic
           echo $SNAP_TOKEN | snapcraft login --with -
           snapcraft --destructive-mode
-          snapcraft upload *.snap
+          snapcraft upload *.snap --release edge
  
