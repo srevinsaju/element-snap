@@ -61,7 +61,7 @@ parts:
       - libx11-xcb1
       - libxcb-dri3-0
       - libgtk2.0-0
-      - libsqlcipher
+      - libsqlcipher-dev
 
 apps:
   element-desktop:
