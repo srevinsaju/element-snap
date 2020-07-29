@@ -19,9 +19,7 @@ jobs:
           SNAP_TOKEN: ${{ secrets.SNAPCRAFT_TOKEN }}
         run: |
           sudo snap install snapcraft --classic
-          sudo snap install multipass --classic
-          sudo chown $USER:$USER /var/snap/multipass/common/multipass_socket
           echo $SNAP_TOKEN | snapcraft login --with -
-          snapcraft
+          snapcraft --destructive-mode
           snapcraft upload *.snap
  
