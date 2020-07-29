@@ -83,7 +83,7 @@ apps:
       - bin/debian-multiarch-triplet-provider-launch
       - bin/classic-launch
       - bin/desktop-launch
-      - opt/Element/element-desktop --no-sandbox
+      - opt/Element/element-desktop 
 
 plugs:
   desktop:
