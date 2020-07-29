@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Element
+Comment=A feature-rich client for Matrix
+Exec=element-desktop
+Terminal=false
+Type=Application
+Icon=${SNAP}/meta/gui/element.png
+StartupWMClass=element
+Categories=Network;InstantMessaging;Chat;IRCClient
+MimeType=x-scheme-handler/element;
