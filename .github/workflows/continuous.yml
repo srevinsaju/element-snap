@@ -1,0 +1,25 @@
+
+
+name: Continuous
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+
+jobs:
+  linux:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Snap Configure
+        env:
+          SNAP_TOKEN: ${{ secrets.SNAPCRAFT_TOKEN }}
+        run: |
+          sudo snap install snapcraft --classic
+          echo $SNAP_TOKEN | snapcraft login --with -
+          snapcraft
+          snapcraft upload *.snap
+ 
