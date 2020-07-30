@@ -61,7 +61,7 @@ parts:
       - libsecret-1-0
       - libgtk-3-0
       - libdb5.3
-      - libsqlcipher-0
+      - libsqlcipher0
     build-packages:
       - wget
     override-build: | 
