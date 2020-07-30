@@ -17,6 +17,7 @@ parts:
   element-desktop:
     plugin: nodejs
     source: https://github.com/vector-im/riot-desktop
+    source-type: git
     stage-packages:
       - libasound2
       - libgconf2-4
