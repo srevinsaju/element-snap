@@ -81,9 +81,8 @@ parts:
       yarn run build:native
       yarn run build
       npm install electron -g  
-    install:
-      mkdir -p usr/lib/element/
-      mv dist/linux-unpacked/resources/* usr/lib/element/
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/lib/element/
+      mv dist/linux-unpacked/resources/* $SNAPCRAFT_PART_INSTALL/usr/lib/element/
 
 
 apps:
