@@ -45,7 +45,7 @@ parts:
       yarn run fetch --cfgdir config
       wget https://raw.githubusercontent.com/srevinsaju/element-deb/master/appimage.js
       mv appimage.js src/.
-      https://raw.githubusercontent.com/srevinsaju/element-deb/master/patch.sh
+      wget https://raw.githubusercontent.com/srevinsaju/element-deb/master/patch.sh
       chmod +x patch.sh
       ./patch.sh
 
@@ -55,11 +55,10 @@ parts:
       - -usr/share/man/*
       - -share/man/*
       - -share/doc/*
-      - -CHANGELOG.md
       - -README.md
 
 apps:
   element-desktop:
-    command: bin/desktop-launch electron .
+    command: bin/desktop-launch $SNAP/bin/element-desktop 
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
  
