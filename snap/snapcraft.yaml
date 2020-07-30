@@ -80,14 +80,15 @@ parts:
       ./patch.sh
       yarn run build:native
       yarn run build
-
-    organize:
-      dist/linux-unpacked/resources/*: usr/lib/element/
+      npm install electron -g  
+    install:
+      mkdir -p usr/lib/element/
+      mv dist/linux-unpacked/resources/* usr/lib/element/
 
 
 apps:
   element-desktop:
-    command: bin/desktop-launch $SNAP/bin/electron $SNAP/usr/lib/element/app.asar "$@"
+    command: bin/desktop-launch $SNAP/usr/bin/electron $SNAP/usr/lib/element/app.asar "$@"
 
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
  
