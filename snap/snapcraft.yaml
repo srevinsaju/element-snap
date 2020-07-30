@@ -43,8 +43,10 @@ parts:
       mv config.sample.json config.json && cd ..
       yarn run fetch --importkey
       yarn run fetch --cfgdir config
-      cp ../*.js src/.
-      cp ../patch.sh .
+      wget https://raw.githubusercontent.com/srevinsaju/element-deb/master/appimage.js
+      mv appimage.js src/.
+      https://raw.githubusercontent.com/srevinsaju/element-deb/master/patch.sh
+      chmod +x patch.sh
       ./patch.sh
 
     stage:
