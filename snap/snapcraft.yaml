@@ -76,6 +76,7 @@ parts:
       wget https://raw.githubusercontent.com/srevinsaju/element-deb/master/patch.sh
       chmod +x patch.sh
       ./patch.sh
+      snapcraftctl build
 
     stage:
       - -lib/node_modules/*
