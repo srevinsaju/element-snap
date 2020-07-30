@@ -64,6 +64,7 @@ parts:
       - libsqlcipher0
     build-packages:
       - wget
+      - libsqlcipher0
     override-build: | 
       yarn install
       yarn run hak
