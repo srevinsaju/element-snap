@@ -61,7 +61,7 @@ parts:
       - libsecret-1-0
       - libgtk-3-0
       - libdb5.3
-      - libsqlcipher-dev
+      - libsqlcipher-0
     build-packages:
       - wget
     override-build: | 
@@ -77,18 +77,16 @@ parts:
       wget https://raw.githubusercontent.com/srevinsaju/element-deb/master/patch.sh
       chmod +x patch.sh
       ./patch.sh
-      snapcraftctl build
+      yarn run build:native
+      yarn run build
 
-    stage:
-      - -lib/node_modules/*
-      - -usr/share/doc/*
-      - -usr/share/man/*
-      - -share/man/*
-      - -share/doc/*
-      - -README.md
+    organize:
+      dist/linux-unpacked/resources/*: usr/lib/element/
+
 
 apps:
   element-desktop:
-    command: bin/desktop-launch $SNAP/bin/element-desktop 
+    command: bin/desktop-launch $SNAP/bin/electron $SNAP/usr/lib/element/app.asar "$@"
+
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
  
