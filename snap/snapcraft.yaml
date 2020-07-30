@@ -44,6 +44,7 @@ parts:
     after:
       - desktop-gtk3
     plugin: nodejs
+    nodejs-version: 14 
     source: https://github.com/vector-im/riot-desktop
     source-type: git
     stage-packages:
