@@ -18,6 +18,7 @@ jobs:
         env:
           SNAP_TOKEN: ${{ secrets.SNAPCRAFT_TOKEN }}
         run: |
+          sudo apt install -y libsqlcipher-dev
           sudo snap install snapcraft --classic
           echo $SNAP_TOKEN | snapcraft login --with -
           snapcraft --destructive-mode
