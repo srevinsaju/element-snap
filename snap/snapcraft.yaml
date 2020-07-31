@@ -89,14 +89,25 @@ parts:
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/lib/element/
       rm -rf dist/linux-unpacked/chrome-sandbox
       mv dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/usr/lib/element/.
+  
+  cleanup:
+    after: [element-desktop]
+    plugin: nil
+    build-snaps: [ gnome-3-28-1804 ]
+    override-prime: |
+        set -eux
+        cd /snap/gnome-3-28-1804/current
+        find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/{} \;
 
 
 apps:
   element-desktop:
     command: bin/desktop-launch $SNAP/usr/lib/element/element-desktop --no-sandbox "$@"
+    extensions: [gnome-3-28]
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$SNAP/usr/lib/element:$LD_LIBRARY_PATH 
       TMPDIR: $XDG_RUNTIME_DIR
+      XDG_CURRENT_DESKTOP: Unity
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
