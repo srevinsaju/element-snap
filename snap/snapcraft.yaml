@@ -58,6 +58,7 @@ parts:
       - libxss1
       - libx11-xcb1
       - libxtst6
+      - libxcb-dri3-0
       - libappindicator1
       - libsecret-1-0
       - libgtk-3-0
