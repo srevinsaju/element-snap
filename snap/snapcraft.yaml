@@ -7,8 +7,8 @@ description: |
   Talk to everyone through the open global Matrix network, 
   protected by proper end-to-end encryption.
 
-grade: stable
-confinement: strict
+grade: devel
+confinement: devmode
 base: core18
 architectures:
 - build-on: amd64
