@@ -14,6 +14,13 @@ architectures:
 - build-on: amd64
 
 parts:
+  snapcraft-preload:
+    source: https://github.com/sergiusens/snapcraft-preload.git
+    plugin: cmake
+    build-packages:
+      - on amd64:
+        - gcc-multilib
+        - g++-multilib
 
   desktop-gtk3:
     build-packages:
@@ -43,6 +50,7 @@ parts:
   element-desktop:
     after:
       - desktop-gtk3
+      - snapcraft-preload
     plugin: nodejs
     nodejs-version: "14.5.0"
     source: https://github.com/vector-im/riot-desktop
@@ -92,7 +100,7 @@ parts:
 
 apps:
   element-desktop:
-    command: bin/desktop-launch $SNAP/usr/lib/element/element-desktop
+    command: bin/desktop-launch $SNAP/bin/snapcraft-preload $SNAP/usr/lib/element/element-desktop
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$SNAP/usr/lib/element:$LD_LIBRARY_PATH 
       TMPDIR: $XDG_RUNTIME_DIR
