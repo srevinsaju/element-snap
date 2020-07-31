@@ -96,6 +96,7 @@ apps:
     command: bin/desktop-launch $SNAP/usr/bin/element-desktop "$@"
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$LD_LIBRARY_PATH 
+      TMPDIR: $XDG_RUNTIME_DIR
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
