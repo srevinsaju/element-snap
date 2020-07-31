@@ -8,19 +8,12 @@ description: |
   protected by proper end-to-end encryption.
 
 grade: devel
-confinement: devmode
+confinement: strict
 base: core18
 architectures:
 - build-on: amd64
 
 parts:
-  snapcraft-preload:
-    source: https://github.com/sergiusens/snapcraft-preload.git
-    plugin: cmake
-    build-packages:
-      - on amd64:
-        - gcc-multilib
-        - g++-multilib
 
   desktop-gtk3:
     build-packages:
@@ -95,12 +88,13 @@ parts:
       yarn run build:native
       yarn run build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/lib/element/
+      rm -rf dist/linux-unpacked/chrome-sandbox
       mv dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/usr/lib/element/.
 
 
 apps:
   element-desktop:
-    command: bin/desktop-launch $SNAP/bin/snapcraft-preload $SNAP/usr/lib/element/element-desktop
+    command: bin/desktop-launch $SNAP/usr/lib/element/element-desktop --no-sandbox "$@"
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$SNAP/usr/lib/element:$LD_LIBRARY_PATH 
       TMPDIR: $XDG_RUNTIME_DIR
