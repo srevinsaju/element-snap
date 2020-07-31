@@ -87,6 +87,7 @@ parts:
 apps:
   element-desktop:
     command: bin/desktop-launch $SNAP/usr/bin/element-desktop $SNAP/usr/lib/element/app.asar "$@"
-    LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$LD_LIBRARY_PATH 
+    environment:
+      LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$LD_LIBRARY_PATH 
     plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
  
