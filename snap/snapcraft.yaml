@@ -43,7 +43,6 @@ parts:
   element-desktop:
     after:
       - desktop-gtk3
-      - snapcraft-preload
     plugin: nodejs
     nodejs-version: "14.5.0"
     source: https://github.com/vector-im/riot-desktop
