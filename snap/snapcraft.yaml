@@ -88,6 +88,8 @@ parts:
       yarn run build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/lib/element/
       mv dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/usr/bin/.
+      chmod 4755 $SNAPCRAFT_PART_INSTALL/usr/bin/chrome-sandbox
+      sudo chown -R root:root $SNAPCRAFT_PART_INSTALL/usr/bin/chrome-sandbox
 
 apps:
   element-desktop:
