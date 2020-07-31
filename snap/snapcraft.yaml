@@ -87,19 +87,14 @@ parts:
       yarn run build:native
       yarn run build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/lib/element/
-      mv dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/usr/bin/.
-      sudo chown root $SNAPCRAFT_PART_INSTALL/usr/bin/chrome-sandbox
-      sudo chmod 4755 $SNAPCRAFT_PART_INSTALL/usr/bin/chrome-sandbox
+      mv dist/linux-unpacked/* $SNAPCRAFT_PART_INSTALL/usr/lib/element/.
 
-    override-prime: |
-      snapcraftctl prime
-      sudo chown root $SNAPCRAFT_PRIME/usr/bin/chrome-sandbox
-      sudo chmod 4755 $SNAPCRAFT_PRIME/usr/bin/chrome-sandbox
+
 apps:
   element-desktop:
-    command: bin/desktop-launch $SNAP/usr/bin/element-desktop "$@"
+    command: bin/desktop-launch $SNAP/usr/lib/element/element-desktop
     environment:
-      LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$LD_LIBRARY_PATH 
+      LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$SNAP/usr/lib/element:$LD_LIBRARY_PATH 
       TMPDIR: $XDG_RUNTIME_DIR
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
