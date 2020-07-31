@@ -56,6 +56,7 @@ parts:
       - libpcre3
       - libpulse0
       - libxss1
+      - libx11-xcb1
       - libxtst6
       - libappindicator1
       - libsecret-1-0
