@@ -75,7 +75,7 @@ parts:
 
 apps:
   element-desktop:
-    command: usr/lib/element/element-desktop --no-sandbox "$@"
+    command: usr/lib/element/element-desktop --no-sandbox
     extensions: [gnome-3-28]
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/bin:$SNAP/usr/lib:$SNAP/usr/local/lib:$SNAP/usr/lib/element:$LD_LIBRARY_PATH 
