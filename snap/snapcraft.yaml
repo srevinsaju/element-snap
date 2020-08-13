@@ -44,6 +44,7 @@ parts:
     build-packages:
       - wget
       - libsqlcipher-dev
+      - cargo
     override-build: | 
       yarn install
       yarn run hak
