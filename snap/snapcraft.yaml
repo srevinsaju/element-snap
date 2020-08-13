@@ -8,7 +8,7 @@ description: |
   protected by proper end-to-end encryption.
 
 grade: devel
-confinement: strict
+confinement: devmode
 base: core18
 architectures:
 - build-on: amd64
