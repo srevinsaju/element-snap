@@ -14,10 +14,19 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - name: Install cargo
+        run: |
+          curl https://sh.rustup.rs -sSf | sh -s -- -y -q
+          export PATH=$PATH:$HOME/.cargo/bin
+          cargo --version
+          rustc --version
+          source $HOME/.cargo/env
+
       - name: Snap Configure
         env:
           SNAP_TOKEN: ${{ secrets.SNAPCRAFT_TOKEN }}
         run: |
+          source $HOME/.cargo/env
           sudo apt install -y libsqlcipher-dev
           sudo snap install snapcraft --classic
           echo $SNAP_TOKEN | snapcraft login --with -
